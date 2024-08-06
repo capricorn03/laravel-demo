@@ -9,6 +9,11 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+    public function setPasswordAttribute(string $value): void
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
     use HasFactory, Notifiable;
 
     /**
